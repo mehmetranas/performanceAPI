@@ -1,0 +1,3 @@
+{
+  "mongoURI": "mongodb+srv://performanceDB:rDFPATs0CQWmNdPe@cluster0.gdu50.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+}
