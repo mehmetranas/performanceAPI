@@ -1,20 +1,20 @@
 const express = require("express");
 const router = express.Router();
 
-// Load PerformanceEntries model
-const PerformanceEntry = require("../../models/PerformanceEntry");
+// Load PerformanceEntry model
+const PerformanceEntries = require("../../models");
 
 // @route GET api/performanceEntries/test
 // @description tests PerformanceEntries route
 // @access Public
 router.get("/test", (req, res) =>
-  res.send("PerformanceEntries route testing!")
+  res.json({ message: "PerformanceEntries route testing!" })
 );
 
 // @route GET api/performanceEntries
 // @description Get all PerformanceEntries
 // @access Public
-router.get("/", (req, res) => {
+router.get("/all", (req, res) => {
   PerformanceEntry.find()
     .then((entries) => res.json(entries))
     .catch((err) =>
@@ -38,14 +38,14 @@ router.get("/:id", (req, res) => {
 // @access Public
 router.post("/", (req, res) => {
   PerformanceEntry.create(req.body)
-    .then((entry) => res.json({ msg: "Entry added successfully" }))
+    .then((entry) => res.json({ msg: "Entry added successfully", entry }))
     .catch((err) =>
       res.status(400).json({ error: "Unable to add this entry" })
     );
 });
 
 // @route GET api/performanceEntry/:id
-// @description Update book
+// @description Update performanceEntry
 // @access Public
 router.put("/:id", (req, res) => {
   PerformanceEntry.findByIdAndUpdate(req.params.id, req.body)

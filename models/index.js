@@ -1,28 +1,36 @@
 const mongoose = require("mongoose");
 
 const PerformanceEntrySchema = new mongoose.Schema({
-  duration: {
+  FCP: {
     type: Number,
     required: true,
   },
-  name: {
-    type: String,
-    required: true,
-  },
-  entryType: {
-    type: String,
-    required: true,
-  },
-  startTime: {
+  TTFB: {
     type: Number,
     required: true,
   },
-  pushed_date: {
+  domLoadEvent: {
+    type: Number,
+    required: true,
+  },
+  windowLoadEvent: {
+    type: Number,
+    required: true,
+  },
+  staticFilesLoaded: {
+    type: Number,
+    required: true,
+  },
+  dateTime: {
     type: Date,
+    required: true,
+  },
+  hostname: {
+    type: String,
+    required: true,
   },
 });
-
-module.exports = Book = mongoose.model(
+module.exports = PerformanceEntry = mongoose.model(
   "performanceEntry",
   PerformanceEntrySchema
 );
